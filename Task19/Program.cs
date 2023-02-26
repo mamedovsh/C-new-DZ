@@ -1,23 +1,37 @@
-﻿// Задача №19 Напишите программу,которая на вход принимает пятизначное 
-// число и проверяет является ли оно палиндромом.
+﻿// Задача 27: Напишите метод, который принимает на 
+// вход число и выдаёт сумму цифр в числе.
+int number = ReadInt(" Введите число: ");
+	int len = NumberLen(number);
+	SumNumbers(number,len);
 
-
-Console.WriteLine(" Введите число: ");
-string number = Console.ReadLine();
-int len = number.Length;
-
-if(len == 5)
-{
-	if(number[0] ==number[4]&&number[1]==number[3])
+	// Функция ввода
+	int ReadInt(string message)
 	{
-		Console.WriteLine("(number) - Палиндром");
+		Console.Write(message);
+		return Convert.ToInt32(Console.ReadLine());
 	}
-	else
+
+	//  Функция подсчета цифр в числе
+
+	int NumberLen(int a)
 	{
-		Console.WriteLine("(number) -не палиндром");
+		int index = 0;
+		while (a > 0)
+		{
+			a /= 10;
+			index++;
+		}
+		return index;
 	}
-}
-else
-{
-	Console.WriteLine("вы ввели не пятизначное число");
-}
+
+	// Функция вывода суммы цифр в числе
+	void SumNumbers(int n, int len)
+	{
+		int sum = 0;
+		for (int i =1; i <= len; i++)
+		{
+			sum += n % 10;
+			n /= 10;
+		}
+		Console.WriteLine(sum);
+	}
